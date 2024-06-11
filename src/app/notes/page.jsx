@@ -20,6 +20,9 @@ function Note() {
     setTasks([...tasks, task]);
     setTask("");
   }
+  function handleDeleteTask(index) {
+    setTasks(tasks.filter((_, i) => i !== index));
+  }
 
   const filteredTasks = tasks.filter((t) =>
     t.toLowerCase().includes(searchTerm.toLowerCase())
@@ -62,7 +65,12 @@ function Note() {
             </div>
             <div className="flex justify-between">
               <div>{currentDate.toLocaleDateString()}</div>
-              <div>sdf</div>
+              <button
+                className="border-2 p-2 rounded-lg bg-slate-500 text-white "
+                onClick={() => handleDeleteTask(index)}
+              >
+                delete
+              </button>
             </div>
           </div>
         ))}
